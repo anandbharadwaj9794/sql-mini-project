@@ -86,11 +86,13 @@ The project demonstrates strong understanding of:
 ##  Tools Used
 - MySQL
 - SQL Workbench / MySQL CLI
+- 
 ##  How to Run
 1. Create database:
 ```sql
 CREATE DATABASE company_records;
 USE company_records;
+
 
 ## Sample Queries
 Self JOIN – Employee & Manager:
@@ -98,7 +100,7 @@ SELECT e.name AS Employee, m.name AS Manager, e.department
 FROM employee e
 JOIN employee m ON e.manager_id = m.emp_id;
 
-** CTE – Employees earning above their department average:
+## CTE – Employees earning above their department average:
 WITH avg_dept_salary AS (
     SELECT AVG(salary) avg_salary, department
     FROM employee
@@ -109,7 +111,7 @@ FROM employee e
 JOIN avg_dept_salary d ON e.department = d.department
 WHERE e.salary > d.avg_salary;
 
-** Window Function – Salary rank within department:
+## Window Function – Salary rank within department:
 SELECT name, department, salary,
        DENSE_RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS salary_rank
 FROM employee;
